@@ -1,0 +1,73 @@
+% !TeX spellcheck = de_DE
+\documentclass[12pt, a4paper,titlepage=true]{scrartcl}
+\usepackage[utf8]{inputenc}
+
+% Graphic
+\usepackage{graphicx}
+
+% Language
+\usepackage[ngerman]{babel} 
+
+% Encoding
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Font
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Line spacing
+\renewcommand{\baselinestretch}{1.25} 
+
+% Multiple rows in tabular
+\usepackage{multirow}
+
+% Line break and formatting of tabular cell
+\usepackage{makecell}
+\renewcommand\theadfont{\bfseries}
+
+% €
+\usepackage{eurosym}
+
+% Geometry
+\usepackage[top=100pt]{geometry}
+
+% Title
+\title{Regelwerk für die Saison 2018}
+\subtitle{Bayern Inline Cup / Kids Inline Cup / Sprint Inline Cup}
+\author{BRIV SK IFS}
+\date{\today}
+
+% Header
+\usepackage{background}
+\backgroundsetup{scale=1,angle=0,opacity=1,vshift=-1cm,position=current page.north,contents={\includegraphics[width=\paperwidth]{header}}}
+
+
+% Header and Footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead{}
+\lfoot{Saison 2018}
+\rfoot{Stand: \today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\input{praeambel}
+\input{wettkampfordnung}
+\input{startberechtigung}
+\input{teams}
+\input{veranstaltungen}
+\input{einzelwertung}
+\input{gesamtwertung}
+\input{schlussbestimmungen}
+
+\newpage
+\appendix
+\input{anhang}
+
+\end{document}

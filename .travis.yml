@@ -1,0 +1,21 @@
+sudo: false
+dist: trusty
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install texlive-latex-extra texlive-lang-german texlive-fonts-recommended
+script:
+  - mkdir _build
+  - pdflatex -output-directory _build ./main.tex
+  - pdflatex -output-directory _build ./main.tex
+before_deploy:
+  - git tag "$(date +'%Y-%m-%d_%H-%M-%S')"
+deploy:
+  provider: releases
+  api_key:
+    secure: RnyCuU/V+g0bGmAo2ZIqEDQVLPvd4PjA0aRawVRUafMSv6y1J0KvISOofY16JZYd2r/VWOwnI7D3ocRyH6y2l4dl1aGlC2lMJ28GQeBkcP2pbkxYfRbPQ44Ns8iQiWw1Lhvxm/HZjwJ6FZGqsnyI6DfqGlqbkDhuuSAAgVC1JN++URpagN7VRZcrjMtCOXYtfAfaompVpBDAn3Y+2qiibPD4CQIfHWIUqhYEXjWwthRM6hoHlP+w5uasKK8BTpiSSdSO/i+Kd42t7+JrjjKihgB9Og7f/JdCdWRBcRYlBHi9BZrhBPnCwjI6MUZcRorfydGJ1hj3YkETTCclY5GxDRedS5xOc/RO8M2qnokXGrXa2zu8c7wYN73PkMejg9ylBqHubYD4CwP+clqHXk/+sBOvYiY9+T9ghFEhAc/sYW0jxETyJiGJaMFfhvdbREb069+AEH0TGohIya1yzJAmvYuvhgL4RkFkx6VPCrKvg4R06Ys7W1Zh23OOWXSMT92iqmymli+8Q7iQ3BUm8OH1guQcOXu6Z3aFQVtC1LEmtx8bcA2VpZlbVwl+0l1MHiJ8JpZJeDj50/hEq9goJLsOGp96EAZSAoLJzyIwzLhE196XNfM4KUYpzXR7i3hNJot7ADhyFk4S+Q/LzvoUvbihDrRjqlivvlBmKKlMvcxmL4I=
+  file:
+  - ./_build/main.pdf
+  skip_cleanup: true
+  on:
+    branch: master

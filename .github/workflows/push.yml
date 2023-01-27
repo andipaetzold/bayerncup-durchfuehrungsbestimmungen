@@ -9,6 +9,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: xu-cheng/latex-action@v2
+      - name: Build
+        uses: xu-cheng/latex-action@v2
         with:
           root_file: main.tex
+      - name: Release
+        if: github.ref == 'refs/heads/master'
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "main.pdf"

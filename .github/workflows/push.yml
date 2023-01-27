@@ -1,0 +1,14 @@
+name: Push
+
+on:
+  - push
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: xu-cheng/latex-action@v2
+        with:
+          root_file: main.tex

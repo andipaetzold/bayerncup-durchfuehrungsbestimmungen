@@ -13,6 +13,10 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main.tex
+      - name: Tag release
+        run: |
+          git tag "$(date +'%Y-%m-%d_%H-%M-%S')"
+          git push --tags
       - name: Release
         if: github.ref == 'refs/heads/master'
         uses: ncipollo/release-action@v1

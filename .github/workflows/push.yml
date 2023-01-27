@@ -13,12 +13,17 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main.tex
+      - name: Tag name
+        id: tag-name
+        run: |
+          echo "NAME=$(date +'%Y-%m-%d_%H-%M-%S')" >> $GITHUB_OUTPUT
       - name: Tag release
         run: |
-          git tag "$(date +'%Y-%m-%d_%H-%M-%S')"
+          git tag ${{ steps.tag-name.outputs.NAME }}
           git push --tags
       - name: Release
         if: github.ref == 'refs/heads/master'
         uses: ncipollo/release-action@v1
         with:
           artifacts: "main.pdf"
+          tag: ${{ steps.tag-name.outputs.NAME }}

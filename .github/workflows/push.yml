@@ -14,10 +14,12 @@ jobs:
         with:
           root_file: main.tex
       - name: Tag name
+        if: github.ref == 'refs/heads/master'
         id: tag-name
         run: |
           echo "NAME=$(date +'%Y-%m-%d_%H-%M-%S')" >> $GITHUB_OUTPUT
       - name: Tag release
+        if: github.ref == 'refs/heads/master'
         run: |
           git tag ${{ steps.tag-name.outputs.NAME }}
           git push --tags
